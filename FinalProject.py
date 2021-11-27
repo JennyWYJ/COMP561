@@ -84,6 +84,35 @@ def random_seq(seq_probs):
         seq_copy.append(draw[0])
     return(seq_copy)  
 
+def best_prob(probs):
+    seq_copy = []
+    list_of_candidates = ['A','T', 'G', 'C']
+    for set in probs:
+        best = 0
+        index = ''
+        for i in range(len(set)):
+            if set[i] > best:
+                best = set[i]
+                index = i
+        seq_copy.append(list_of_candidates[index])
+    #print(seq_copy)
+    return seq_copy
+
+def best_score(probs):
+    seq_copy = []
+    list_of_candidates = ['A','T', 'G', 'C']
+    for set in probs:
+        if 1.0 in set:
+            i = set.index(1.0)
+            seq_copy.append(list_of_candidates[i])
+        else:
+            seq_copy.append('M')
+    print(seq_copy)
+    return seq_copy
+
+
+
+
 def datab_probs(seq, prob):
 
     probs_list = []
@@ -124,7 +153,9 @@ def smith_waterman(query, datab, probs_list):
     for i in range(1, row):
         for j in range(1, col):
             # Calculating the diagonal score (match score)
-            if query[i - 1] == datab[j - 1]:
+            if datab[j-1] == 'M':
+                match_value = MATCH
+            elif query[i - 1] == datab[j - 1]:
                 match_value = MATCH 
             else:
                 match_value = MISMATCH
@@ -165,11 +196,19 @@ def smith_waterman(query, datab, probs_list):
     (max_i, max_j) = max_index
     total_prob = 1
     # Tracing and computing the pathway with the local alignment
+    nucleotide = ['A','T', 'G', 'C']
     while trace[max_i, max_j] != STOP:
         if trace[max_i, max_j] == DIAGONAL:
             current_aligned_query = query[max_i - 1]
-            current_aligned_datab = datab[max_j - 1]
-            total_prob = total_prob*probs_list[max_j - 1]
+            if datab[max_j - 1] == 'M':
+                current_aligned_datab = query[max_i - 1]
+            else:
+                current_aligned_datab = datab[max_j - 1]
+            if isinstance(probs_list[max_j - 1], list):
+                index = nucleotide.index(query[max_i - 1])
+                total_prob = total_prob*probs_list[max_j - 1][index]
+            else:
+                total_prob = total_prob*probs_list[max_j - 1]
             max_i = max_i - 1
             max_j = max_j - 1
             
@@ -181,7 +220,11 @@ def smith_waterman(query, datab, probs_list):
         elif trace[max_i, max_j] == LEFT:
             current_aligned_query = '-'
             current_aligned_datab = datab[max_j - 1]
-            total_prob = total_prob*probs_list[max_j - 1]
+            if isinstance(probs_list[max_j - 1], list):
+                index = nucleotide.index(datab[max_j - 1])
+                total_prob = total_prob*probs_list[max_j-1][index]
+            else:
+                total_prob = total_prob*probs_list[max_j - 1]
             max_j = max_j - 1
             
         aligned_query = aligned_query + current_aligned_query
@@ -193,11 +236,16 @@ def smith_waterman(query, datab, probs_list):
     
     return aligned_query, aligned_datab, max_score, total_prob
 
+
+
 seq = sequence_probs('probsa.txt', 'seqa.txt')
-y = random_seq(seq)
-print(seq)
-print(y)
-z = datab_probs(y,seq)
-print(z)
+best = best_score(seq)
+print(best)
+#y = random_seq(seq)
+#print(seq)
+#print(y)
+#z = datab_probs(y,seq)
+#z = datab_probs(best,seq)
+#print(z)
 query = ['A', 'C', 'A', 'T']
-print(smith_waterman(query, y, z))
+print(smith_waterman(query, best, seq))
