@@ -1,4 +1,4 @@
-#Code for COMP 561 Final Project
+#Code for COMP 561 Final Project initial attempt (using S-W algorithm)
 import numpy as np
 from numpy.random import choice
 
