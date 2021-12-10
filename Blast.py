@@ -1,9 +1,11 @@
 # Second attempt at alignment using BLAST (more time and space efficient)
 import numpy as np
 from numpy.random import choice
+import random
 
 from Bio import SeqIO
 from Bio.Blast import NCBIWWW
+from Bio.Blast.Applications import NcbiblastnCommandline
 
 import subprocess
 
@@ -18,7 +20,7 @@ def test_BLAST():
     blast_result.close()
     result_handle.close()
 
-# Initialize (returns) query nucleotide probability list. 
+# Initialize (returns) database nucleotide probability list. 
 def sequence_probs(probsfile, seqfile):
     pf = open(probsfile)
     sf = open(seqfile)
@@ -110,8 +112,50 @@ def datab_probs(seq, prob):
 
 # Alignment using BLAST
 
+# Running BLAST on specified database with specific query
+# Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
+def run_BLASTn(q, d, o):
+    blastn_cline = NcbiblastnCommandline(query=q, db=d, \
+    evalue=1e-20, outfmt=5, out=o)
+    stdout, stderr = blastn_cline()
+
+# Create query .fasta file using randomized database (no mutations, no indels). Control testing BLAST (query with identical nucleotides).
+# Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
+def create_query(filename, qnum, dbseq):
+    fname = "ControlQueries/"+filename+".fasta"
+    qname = "Control query "+str(qnum)
+    qfile = open(fname, "w")
+
+    random_startpos = random.randint(0, len(dbseq)-3)
+    random_endpos = 0
+    if (random_startpos == (len(dbseq)-3)):
+        random_endpos = len(dbseq)-1 # query needs to be at least 2 nucleotides long
+    else:
+        random_endpos = random.randint(random_startpos+2, len(dbseq)-1)
+
+    if random_endpos == len(dbseq)-1:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,len(dbseq)):
+            qfile.write(dbseq[i])
+        qfile.write("\n")
+    else:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,random_endpos+1):
+            qfile.write(dbseq[i])
+        qfile.write("\n")
+
+    qfile.close()
+
+# Create query .fasta file containing mutations using randomized database.
+# Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
+def mut_query(filename, qnum, dbseq):
+    return
 # Creating a BLAST database by calling bash script
 def create_datab(script_path):
     subprocess.call(script_path)
 
-create_datab('https://github.com/JennyWYJ/COMP561/createDB.sh')
+#create_datab('https://github.com/JennyWYJ/COMP561/createDB.sh')
+seq = sequence_probs('probsa.txt', 'seqa.txt')
+y = random_seq(seq)
+print(y)
+create_query('test', 1, y)
