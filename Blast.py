@@ -122,7 +122,7 @@ def run_BLASTn(q, d, o):
 # Create query .fasta file using randomized database (no mutations, no indels). Control testing BLAST (query with identical nucleotides).
 # Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
 def create_query(filename, qnum, dbseq):
-    fname = "ControlQueries/"+filename+".fasta"
+    fname = "ControlQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Control query "+str(qnum)
     qfile = open(fname, "w")
 
@@ -147,9 +147,54 @@ def create_query(filename, qnum, dbseq):
     qfile.close()
 
 # Create query .fasta file containing mutations using randomized database.
-# Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
-def mut_query(filename, qnum, dbseq):
-    return
+# Params: .fasta filename (string), query number (int), number of mutations (int - at least 1), dbseq database sequence from random_seq (list)
+def mut_query(filename, qnum, mutNum, dbseq):
+    fname = "MutationQueries/"+filename+".fasta" #path might need to change depending on user
+    qname = "Mutation query "+str(qnum)
+    qfile = open(fname, "w")
+    
+    numMuts = mutNum
+    list_of_candidates = ['A','T', 'G', 'C']
+
+    random_startpos = random.randint(0, len(dbseq)-3)
+    random_endpos = 0
+    if (random_startpos == (len(dbseq)-3)):
+        random_endpos = len(dbseq)-1 # query needs to be at least 2 nucleotides long
+    else:
+        random_endpos = random.randint(random_startpos+2, len(dbseq)-1)
+
+    numNucs = random_endpos - random_startpos
+    if numMuts >= numNucs:
+        numMuts = numNucs - 1 #suppose at least one nucleotide is not corrupted
+    
+    tmp_query = []
+    if random_endpos == len(dbseq)-1:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,len(dbseq)):
+            tmp_query.append(dbseq[i])
+    else:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,random_endpos+1):
+            tmp_query.append(dbseq[i])
+    
+    for m in range(numMuts):
+        mutPos = random.randint(0, len(tmp_query))
+        nAtPos = tmp_query[mutPos]
+        prob_distribution = []
+        for n in list_of_candidates:
+            if nAtPos == n:
+                prob_distribution.append(0)
+            else:
+                prob_distribution.append(1/3)
+        mutNuc = choice(list_of_candidates, 1, p = prob_distribution)
+        tmp_query[mutPos] = mutNuc[0]
+
+    for nu in tmp_query:
+        qfile.write(nu)
+    qfile.write("\n")
+
+    qfile.close()
+
 # Creating a BLAST database by calling bash script
 def create_datab(script_path):
     subprocess.call(script_path)
@@ -158,4 +203,5 @@ def create_datab(script_path):
 seq = sequence_probs('probsa.txt', 'seqa.txt')
 y = random_seq(seq)
 print(y)
-create_query('test', 1, y)
+#create_query('test', 1, y)
+#mut_query('test', 1, 2, y)
