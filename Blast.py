@@ -211,8 +211,8 @@ def mut_query(filename, qnum, mutNum, dbseq, capLength):
     qfile.close()
 
 # Create query .fasta file containing mutations using randomized database.
-# Params: .fasta filename (string), query number (int), number of indels (int - at least 1), dbseq database sequence from random_seq (list)
-def indel_query(filename, qnum, indelNum, dbseq):
+# Params: .fasta filename (string), query number (int), number of indels (int - at least 1), dbseq database sequence from random_seq (list), cap query length at 20 nucleotides (bool)
+def indel_query(filename, qnum, indelNum, dbseq, capLength):
     fname = "IndelQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Indel query "+str(qnum)
     qfile = open(fname, "a")
@@ -237,6 +237,10 @@ def indel_query(filename, qnum, indelNum, dbseq):
         else:
             numIndels = 1
     
+    endPos = random_startpos + 20
+    if capLength == True and endPos<len(dbseq):
+        random_endpos = endPos
+
     tmp_query = []
     if random_endpos == len(dbseq)-1:
         qfile.write(">" + qname + "\n")
@@ -354,6 +358,13 @@ def permutate_mut(numPerms, datab):
     for i in range(numPerms):
         numMuts = random.randint(1,5)
         mut_query('mutations', i, numMuts, datab, True)
+
+# Permutates for numPerms amount of times mutation queries (not permutation for BLAST)
+def permutate_indel(numPerms, datab):
+    create_query_file('indels', "Indels")
+    for i in range(numPerms):
+        numIndels = random.randint(1,5)
+        indel_query('indels', i, numIndels, datab, True)
         
 
 # TESTS
@@ -379,5 +390,15 @@ def test_mutq():
     run_BLASTn("MutationQueries/mutations.fasta", dbname, 'mut_out.xml')
     parse_XML('mut_out.xml','mut_results', seq, y)
 
+def test_indelq():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    y = random_seq(seq)
+    permutate_indel(5, y)
+    dbname = create_fasta_datab(y, 'indeldb', 1)
+    create_datab(dbname)
+    run_BLASTn("IndelQueries/indels.fasta", dbname, 'indel_out.xml')
+    parse_XML('indel_out.xml','indel_results', seq, y)
+
 #test_controlq()
-test_mutq()
+#test_mutq()
+test_indelq()

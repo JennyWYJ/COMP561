@@ -1,0 +1,27 @@
+QUERY: Indel query 0
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.7183267986123615
+Score 34 (31 bits), expectation 1.2e-03, alignment length 17
+Query:       8 TCAACTCTGTCCCACAG 24
+               |||||||||||||||||
+Sbjct:  233819 TCAACTCTGTCCCACAG 233835
+QUERY: Indel query 2
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.07967160507696337
+Score 32 (30 bits), expectation 2.6e-03, alignment length 16
+Query:       5 CCCAGCCCACCCCCCC 20
+               ||||||||||||||||
+Sbjct:  236985 CCCAGCCCACCCCCCC 237000
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.11732926130079684
+Score 32 (30 bits), expectation 2.6e-03, alignment length 16
+Query:       5 CCCAGCCCACCCCCCC 20
+               ||||||||||||||||
+Sbjct:  419523 CCCAGCCCACCCCCCC 419538
+QUERY: Indel query 4
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0025119794739495343
+Score 40 (37 bits), expectation 2.1e-05, alignment length 20
+Query:       2 GAGCTCCCTGCCTGGGTCTG 21
+               ||||||||||||||||||||
+Sbjct:  444712 GAGCTCCCTGCCTGGGTCTG 444731
