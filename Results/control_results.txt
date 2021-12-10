@@ -1,0 +1,10 @@
+QUERY: Control query 0MATCH: gnl|BL_ORD_ID|0 Database 1 Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 AGTCTTGACACGGGGCACTGA 21
+               |||||||||||||||||||||
+Sbjct:  522231 AGTCTTGACACGGGGCACTGA 522251QUERY: Control query 1MATCH: gnl|BL_ORD_ID|0 Database 1 Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GCAGTGAGACTTGTCCAGCTA 21
+               |||||||||||||||||||||
+Sbjct:  506304 GCAGTGAGACTTGTCCAGCTA 506324QUERY: Control query 2MATCH: gnl|BL_ORD_ID|0 Database 1 Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GCCGGGATTACAAATGGAGCC 21
+               |||||||||||||||||||||
+Sbjct:  394614 GCCGGGATTACAAATGGAGCC 394634

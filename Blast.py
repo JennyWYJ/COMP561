@@ -294,38 +294,51 @@ def run_BLASTn(q, d, o):
 
 # Parsing XML file
 # Param: XML filename (string)
-def parse_XML(filename):
+def parse_XML(filename, resultsfile):
+    fname = "Results/"+resultsfile+".txt" #path might need to change depending on user
+    result = open(fname, "w")
     for record in NCBIXML.parse(open(filename)):
-        print(record.alignments)
+        #print(record.alignments)
         if record.alignments: #skip queries with no matches
             #print("Hi")
+            q = "QUERY: %s" % record.query[:60]
             print("QUERY: %s" % record.query[:60])
+            result.write(q)
             for align in record.alignments:
                 for hsp in align.hsps:
                     if hsp.expect < E_VALUE_THRESH:
+                        m = "MATCH: %s " % align.title[:60]
                         print("MATCH: %s " % align.title[:60])
-                        print(hsp.expect)
+                        h = str(hsp)
+                        print(hsp)
+                        result.write(m)
+                        result.write(h)
+    result.close()
+                    
 
 # Permutates for numPerms amount of times control queries (not permutation for BLAST)
 def permutate_control(numPerms, datab):
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-    create_query_file('control3', "Control")
+    create_query_file('controls', "Control")
     for i in range(numPerms):
-        create_query('control3', i, datab, True)
+        create_query('controls', i, datab, True)
     
     #need to create datab
     #need to run BLAST
         
 
 # TESTS
-seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-y = random_seq(seq)
-permutate_control(3, y)
-#print(y)
-#create_query('control3', 1, y, True)
-#mut_query('test', 1, 2, y)
-#indel_query('test', 1, 3, y)
-dbname = create_fasta_datab(y, 'test', 1)
-create_datab(dbname)
-run_BLASTn("ControlQueries/control3.fasta", dbname, 'out3.xml')
-parse_XML('out3.xml')
+def test_controlq():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    y = random_seq(seq)
+    permutate_control(3, y)
+    #print(y)
+    #create_query('control3', 1, y, True)
+    #mut_query('test', 1, 2, y)
+    #indel_query('test', 1, 3, y)
+    dbname = create_fasta_datab(y, 'controldb', 1)
+    create_datab(dbname)
+    run_BLASTn("ControlQueries/controls.fasta", dbname, 'control_out.xml')
+    parse_XML('control_out.xml','control_results')
+
+test_controlq()
