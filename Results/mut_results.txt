@@ -1,0 +1,28 @@
+QUERY: Mutation query 0
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.4383183687844638
+Score 34 (31 bits), expectation 8.8e-04, alignment length 17
+Query:       3 GTCGGCCCACCTGGCTT 19
+               |||||||||||||||||
+Sbjct:  468962 GTCGGCCCACCTGGCTT 468978
+QUERY: Mutation query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.43099607916741695
+Score 30 (28 bits), expectation 1.1e-02, alignment length 18
+Query:       4 ACATTCTCCAATATCTCC 21
+               |||||||||||| |||||
+Sbjct:   10306 ACATTCTCCAATGTCTCC 10323
+QUERY: Mutation query 2
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.13748606308561892
+Score 32 (30 bits), expectation 3.1e-03, alignment length 19
+Query:       3 AGTGAAAGCATGAAAAGGT 21
+               |||||||| ||||||||||
+Sbjct:  541469 AGTGAAAGAATGAAAAGGT 541487
+QUERY: Mutation query 4
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.7692578282999819
+Score 32 (30 bits), expectation 3.1e-03, alignment length 19
+Query:       1 CACGTCGTAGTAGCAGCGG 19
+               |||||||||||||| ||||
+Sbjct:  174547 CACGTCGTAGTAGCCGCGG 174565

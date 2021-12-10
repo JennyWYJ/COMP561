@@ -158,8 +158,8 @@ def create_query(filename, qnum, dbseq, capLength):
     qfile.close()
 
 # Create query .fasta file containing mutations using randomized database.
-# Params: .fasta filename (string), query number (int), number of mutations (int - at least 1), dbseq database sequence from random_seq (list)
-def mut_query(filename, qnum, mutNum, dbseq):
+# Params: .fasta filename (string), query number (int), number of mutations (int - at least 1), dbseq database sequence from random_seq (list), cap query length at 20 nucleotides (bool)
+def mut_query(filename, qnum, mutNum, dbseq, capLength):
     fname = "MutationQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Mutation query "+str(qnum)
     qfile = open(fname, "a")
@@ -178,6 +178,10 @@ def mut_query(filename, qnum, mutNum, dbseq):
     if numMuts >= numNucs:
         numMuts = numNucs - 1 #suppose at least one nucleotide is not corrupted
     
+    endPos = random_startpos + 20
+    if capLength == True and endPos<len(dbseq):
+        random_endpos = endPos
+
     tmp_query = []
     if random_endpos == len(dbseq)-1:
         qfile.write(">" + qname + "\n")
@@ -189,7 +193,7 @@ def mut_query(filename, qnum, mutNum, dbseq):
             tmp_query.append(dbseq[i])
     
     for m in range(numMuts):
-        mutPos = random.randint(0, len(tmp_query))
+        mutPos = random.randint(0, len(tmp_query)-1)
         nAtPos = tmp_query[mutPos]
         prob_distribution = []
         for n in list_of_candidates:
@@ -340,13 +344,16 @@ def parse_XML(filename, resultsfile, dbprobs, db):
 
 # Permutates for numPerms amount of times control queries (not permutation for BLAST)
 def permutate_control(numPerms, datab):
-    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
     create_query_file('controls', "Control")
     for i in range(numPerms):
         create_query('controls', i, datab, True)
-    
-    #need to create datab
-    #need to run BLAST
+
+# Permutates for numPerms amount of times mutation queries (not permutation for BLAST)
+def permutate_mut(numPerms, datab):
+    create_query_file('mutations', "Mutation")
+    for i in range(numPerms):
+        numMuts = random.randint(1,5)
+        mut_query('mutations', i, numMuts, datab, True)
         
 
 # TESTS
@@ -363,4 +370,14 @@ def test_controlq():
     run_BLASTn("ControlQueries/controls.fasta", dbname, 'control_out.xml')
     parse_XML('control_out.xml','control_results', seq, y)
 
-test_controlq()
+def test_mutq():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    y = random_seq(seq)
+    permutate_mut(5, y)
+    dbname = create_fasta_datab(y, 'mutdb', 1)
+    create_datab(dbname)
+    run_BLASTn("MutationQueries/mutations.fasta", dbname, 'mut_out.xml')
+    parse_XML('mut_out.xml','mut_results', seq, y)
+
+#test_controlq()
+test_mutq()
