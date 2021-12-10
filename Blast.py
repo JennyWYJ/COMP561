@@ -301,13 +301,13 @@ def parse_XML(filename, resultsfile):
         #print(record.alignments)
         if record.alignments: #skip queries with no matches
             #print("Hi")
-            q = "QUERY: %s" % record.query[:60]
+            q = "QUERY: %s\n" % record.query[:60]
             print("QUERY: %s" % record.query[:60])
             result.write(q)
             for align in record.alignments:
                 for hsp in align.hsps:
                     if hsp.expect < E_VALUE_THRESH:
-                        m = "MATCH: %s " % align.title[:60]
+                        m = "MATCH: %s\n" % align.title[:60]
                         print("MATCH: %s " % align.title[:60])
                         h = str(hsp)
                         print(hsp)
