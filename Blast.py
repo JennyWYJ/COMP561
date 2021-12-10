@@ -421,7 +421,7 @@ def test_indelq():
 
 def test_db_perms():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-    permutate_datab(3, seq)
+    permutate_datab(10, seq)
 
 #test_controlq()
 #test_mutq()
