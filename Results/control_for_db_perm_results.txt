@@ -1,0 +1,10 @@
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.014037770781770466
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 TGACTGTTTAGCTGGGTCCGG 21
+               |||||||||||||||||||||
+Sbjct:   24787 TGACTGTTTAGCTGGGTCCGG 24807
+DATABASE0
+DATABASE1
+DATABASE2

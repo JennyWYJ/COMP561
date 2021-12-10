@@ -319,7 +319,7 @@ def calculate_probs(db, dbprobs, start, end):
 # Param: XML filename (string), results filename (string), database probabilities (list(list)), database sequence (list)
 def parse_XML(filename, resultsfile, dbprobs, db):
     fname = "Results/"+resultsfile+".txt" #path might need to change depending on user
-    result = open(fname, "w")
+    result = open(fname, "a")
     for record in NCBIXML.parse(open(filename)):
         #print(record.alignments)
         if record.alignments: #skip queries with no matches
@@ -366,7 +366,27 @@ def permutate_indel(numPerms, datab):
         numIndels = random.randint(1,8)
         indel_query('indels2', i, numIndels, datab, True)
         
+def permutate_datab(numPerms, seqProbs):
+    datab = random_seq(seqProbs)
+    dbname = create_fasta_datab(datab, 'permutedb', 1)
+    create_datab(dbname)
 
+    create_query_file("control_for_db_perm", "Control")
+    create_query("control_for_db_perm", 1, datab, True)
+
+    result = open("Results/control_for_db_perm_results.txt", "w")
+
+    for i in range(numPerms):
+        result.write("DATABASE"+str(i)+'\n')
+        run_BLASTn("ControlQueries/control_for_db_perm.fasta", dbname, 'controldb_out.xml')
+        parse_XML('controldb_out.xml','control_for_db_perm_results', seqProbs, datab)
+
+        datab = random_seq(seqProbs)
+        dbname = create_fasta_datab(datab, 'permutedb', 1)
+        create_datab(dbname)
+
+    result.close()
+    
 # TESTS
 def test_controlq():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
@@ -399,6 +419,11 @@ def test_indelq():
     run_BLASTn("IndelQueries/indels2.fasta", dbname, 'indel_out2.xml')
     parse_XML('indel_out2.xml','indel_results2', seq, y)
 
+def test_db_perms():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    permutate_datab(3, seq)
+
 #test_controlq()
 #test_mutq()
-test_indelq()
+#test_indelq()
+test_db_perms()
