@@ -7,7 +7,7 @@
   <BlastOutput_db>Databases/test.fasta</BlastOutput_db>
   <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
   <BlastOutput_query-def>Control query 1</BlastOutput_query-def>
-  <BlastOutput_query-len>5</BlastOutput_query-len>
+  <BlastOutput_query-len>20445</BlastOutput_query-len>
   <BlastOutput_param>
     <Parameters>
       <Parameters_expect>1e-20</Parameters_expect>
@@ -23,15 +23,15 @@
   <Iteration_iter-num>1</Iteration_iter-num>
   <Iteration_query-ID>Query_1</Iteration_query-ID>
   <Iteration_query-def>Control query 1</Iteration_query-def>
-  <Iteration_query-len>5</Iteration_query-len>
+  <Iteration_query-len>20445</Iteration_query-len>
 <Iteration_hits>
 </Iteration_hits>
   <Iteration_stat>
     <Statistics>
       <Statistics_db-num>1</Statistics_db-num>
       <Statistics_db-len>10</Statistics_db-len>
-      <Statistics_hsp-len>1</Statistics_hsp-len>
-      <Statistics_eff-space>36</Statistics_eff-space>
+      <Statistics_hsp-len>7</Statistics_hsp-len>
+      <Statistics_eff-space>61314</Statistics_eff-space>
       <Statistics_kappa>0.46</Statistics_kappa>
       <Statistics_lambda>1.28</Statistics_lambda>
       <Statistics_entropy>0.85</Statistics_entropy>

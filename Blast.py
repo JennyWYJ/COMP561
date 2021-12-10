@@ -282,7 +282,7 @@ def parse_XML(filename):
     for record in NCBIXML.parse(open(filename)):
         print(record.alignments)
         if record.alignments: #skip queries with no matches
-            print("Hi")
+            #print("Hi")
             print("QUERY: %s" % record.query[:60])
             for align in record.alignments:
                 for hsp in align.hsps:
@@ -291,9 +291,9 @@ def parse_XML(filename):
                         print(hsp.expect)
 
 # TESTS
-seq = sequence_probs('probsa.txt', 'seqa.txt')
+seq = sequence_probs('full_probs.txt', 'full_seq.txt')
 y = random_seq(seq)
-print(y)
+#print(y)
 create_query('test', 1, y)
 #mut_query('test', 1, 2, y)
 #indel_query('test', 1, 3, y)
