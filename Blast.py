@@ -154,7 +154,7 @@ def create_query(filename, qnum, dbseq, capLength):
         for i in range(random_startpos,random_endpos+1):
             qfile.write(dbseq[i])
         qfile.write("\n")
-
+    print(dbseq)
     qfile.close()
 
 # Create query .fasta file containing mutations using randomized database.
@@ -289,7 +289,8 @@ def create_datab(filename):
 def run_BLASTn(q, d, o):
     blastn_cline = NcbiblastnCommandline(query=q, db=d, \
     evalue=1e-20, outfmt=5, out=o, word_size=7)
-    return blastn_cline()
+    print(blastn_cline)
+    stdout, stderr = blastn_cline()
 
 # Parsing XML file
 # Param: XML filename (string)
@@ -321,10 +322,10 @@ def permutate_control(numPerms):
 seq = sequence_probs('full_probs.txt', 'full_seq.txt')
 y = random_seq(seq)
 #print(y)
-#create_query('test', 1, y)
+create_query('control2', 1, y, True)
 #mut_query('test', 1, 2, y)
 #indel_query('test', 1, 3, y)
 dbname = create_fasta_datab(y, 'test', 1)
 #d = create_datab(dbname)
-run_BLASTn("ControlQueries/controlq.fasta", dbname, 'out.xml')
-parse_XML('out.xml')
+run_BLASTn("ControlQueries/control2.fasta", dbname, 'out2.xml')
+parse_XML('out2.xml')
