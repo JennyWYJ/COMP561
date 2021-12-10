@@ -154,6 +154,7 @@ def create_query(filename, qnum, dbseq, capLength):
         for i in range(random_startpos,random_endpos+1):
             qfile.write(dbseq[i])
         qfile.write("\n")
+
     print(dbseq)
     qfile.close()
 
@@ -289,7 +290,7 @@ def create_datab(filename):
 def run_BLASTn(q, d, o):
     blastn_cline = NcbiblastnCommandline(query=q, db=d, \
     evalue=1e-20, outfmt=5, out=o, word_size=7)
-    print(blastn_cline)
+    #print(blastn_cline)
     stdout, stderr = blastn_cline()
 
 # Parsing XML file

@@ -39,26 +39,6 @@
   </Iteration_stat>
   <Iteration_message>No hits found</Iteration_message>
 </Iteration>
-<Iteration>
-  <Iteration_iter-num>2</Iteration_iter-num>
-  <Iteration_query-ID>Query_2</Iteration_query-ID>
-  <Iteration_query-def>Control query 1</Iteration_query-def>
-  <Iteration_query-len>21</Iteration_query-len>
-<Iteration_hits>
-</Iteration_hits>
-  <Iteration_stat>
-    <Statistics>
-      <Statistics_db-num>1</Statistics_db-num>
-      <Statistics_db-len>10</Statistics_db-len>
-      <Statistics_hsp-len>2</Statistics_hsp-len>
-      <Statistics_eff-space>152</Statistics_eff-space>
-      <Statistics_kappa>0.46</Statistics_kappa>
-      <Statistics_lambda>1.28</Statistics_lambda>
-      <Statistics_entropy>0.85</Statistics_entropy>
-    </Statistics>
-  </Iteration_stat>
-  <Iteration_message>No hits found</Iteration_message>
-</Iteration>
 </BlastOutput_iterations>
 </BlastOutput>
 
