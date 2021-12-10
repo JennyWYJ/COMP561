@@ -195,6 +195,62 @@ def mut_query(filename, qnum, mutNum, dbseq):
 
     qfile.close()
 
+# Create query .fasta file containing mutations using randomized database.
+# Params: .fasta filename (string), query number (int), number of indels (int - at least 1), dbseq database sequence from random_seq (list)
+def indel_query(filename, qnum, indelNum, dbseq):
+    fname = "IndelQueries/"+filename+".fasta" #path might need to change depending on user
+    qname = "Indel query "+str(qnum)
+    qfile = open(fname, "w")
+    
+    numIndels = indelNum
+    list_of_candidates = ['A','T', 'G', 'C']
+    prob_distribution = [0.25, 0.25, 0.25, 0.25]
+    indels = ['I', 'D'] #insert or delete
+    indelProbs = [0.5, 0.5]
+
+    random_startpos = random.randint(0, len(dbseq)-3)
+    random_endpos = 0
+    if (random_startpos == (len(dbseq)-3)):
+        random_endpos = len(dbseq)-1 # query needs to be at least 2 nucleotides long
+    else:
+        random_endpos = random.randint(random_startpos+2, len(dbseq)-1)
+
+    numNucs = random_endpos - random_startpos
+    if numIndels >= numNucs//2: #suppose we have single indels, so can't be more than half of the og query
+        if numNucs//2 > 0 and numNucs != 3:
+            numIndels = numNucs//2
+        else:
+            numIndels = 1
+    
+    tmp_query = []
+    if random_endpos == len(dbseq)-1:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,len(dbseq)):
+            tmp_query.append(dbseq[i])
+    else:
+        qfile.write(">" + qname + "\n")
+        for i in range(random_startpos,random_endpos+1):
+            tmp_query.append(dbseq[i])
+
+    for m in range(numIndels):
+        indelPos = random.randint(0, len(tmp_query))
+        inOrDel = choice(indels, 1, p = indelProbs)
+        inNuc = choice(list_of_candidates, 1, p = prob_distribution)
+
+        if inOrDel[0] == 'I':
+            tmp_query = tmp_query[:indelPos] + [inNuc[0]] + tmp_query[indelPos:]
+        elif inOrDel[0] == 'D':
+            if indelPos+1 < len(tmp_query):
+                tmp_query = tmp_query[:indelPos] + tmp_query[indelPos+1:]
+            elif indelPos+1 == len(tmp_query):
+                tmp_query = tmp_query[:indelPos]
+
+    for nu in tmp_query:
+        qfile.write(nu)
+    qfile.write("\n")
+
+    qfile.close()
+
 # Creating a BLAST database by calling bash script
 def create_datab(script_path):
     subprocess.call(script_path)
@@ -205,3 +261,4 @@ y = random_seq(seq)
 print(y)
 #create_query('test', 1, y)
 #mut_query('test', 1, 2, y)
+indel_query('test', 1, 3, y)
