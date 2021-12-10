@@ -307,25 +307,25 @@ def parse_XML(filename):
                         print(hsp.expect)
 
 # Permutates for numPerms amount of times control queries (not permutation for BLAST)
-def permutate_control(numPerms):
+def permutate_control(numPerms, datab):
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-    create_query_file('controlq', "Control")
+    create_query_file('control3', "Control")
     for i in range(numPerms):
-        datab = random_seq(seq)
-        create_query('controlq', i, datab, True)
+        create_query('control3', i, datab, True)
     
     #need to create datab
     #need to run BLAST
         
-#permutate_control(5)
+
 # TESTS
 seq = sequence_probs('full_probs.txt', 'full_seq.txt')
 y = random_seq(seq)
+permutate_control(3, y)
 #print(y)
-create_query('control2', 1, y, True)
+#create_query('control3', 1, y, True)
 #mut_query('test', 1, 2, y)
 #indel_query('test', 1, 3, y)
 dbname = create_fasta_datab(y, 'test', 1)
 create_datab(dbname)
-run_BLASTn("ControlQueries/control2.fasta", dbname, 'out2.xml')
-parse_XML('out2.xml')
+run_BLASTn("ControlQueries/control3.fasta", dbname, 'out3.xml')
+parse_XML('out3.xml')
