@@ -155,7 +155,6 @@ def create_query(filename, qnum, dbseq, capLength):
             qfile.write(dbseq[i])
         qfile.write("\n")
 
-    print(dbseq)
     qfile.close()
 
 # Create query .fasta file containing mutations using randomized database.
@@ -282,8 +281,8 @@ def create_fasta_datab(generated_db, fname, dbNum):
 # Param: .fasta filename
 # Returns: custom database
 def create_datab(filename):
-    cline = NcbimakeblastdbCommandline(dbtype="nucl", input_file=filename)
-    return cline()
+    cline = NcbimakeblastdbCommandline(dbtype="nucl", input_file=filename, )
+    cline()
 
 # Running BLAST on specified database with specific query
 # Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
@@ -327,6 +326,6 @@ create_query('control2', 1, y, True)
 #mut_query('test', 1, 2, y)
 #indel_query('test', 1, 3, y)
 dbname = create_fasta_datab(y, 'test', 1)
-#d = create_datab(dbname)
+create_datab(dbname)
 run_BLASTn("ControlQueries/control2.fasta", dbname, 'out2.xml')
 parse_XML('out2.xml')
