@@ -2,6 +2,22 @@
 import numpy as np
 from numpy.random import choice
 
+from Bio import SeqIO
+from Bio.Blast import NCBIWWW
+
+import subprocess
+
+
+# Testing Bio.BLAST. "test.fasta" can be changed to whatever fasta filename we set for query. 
+# Database here is solely NCBI database.
+def test_BLAST():
+    my_query = SeqIO.read("test.fasta", format="fasta")
+    result_handle = NCBIWWW.qblast("blastn", "nt", my_query.seq)
+    blast_result = open("my_blast.xml", "w")
+    blast_result.write(result_handle.read())
+    blast_result.close()
+    result_handle.close()
+
 # Initialize (returns) query nucleotide probability list. 
 def sequence_probs(probsfile, seqfile):
     pf = open(probsfile)
@@ -91,3 +107,11 @@ def datab_probs(seq, prob):
             probs_list.append(prob[i][3])
 
     return probs_list
+
+# Alignment using BLAST
+
+# Creating a BLAST database by calling bash script
+def create_datab(script_path):
+    subprocess.call(script_path)
+
+create_datab('https://github.com/JennyWYJ/COMP561/createDB.sh')
