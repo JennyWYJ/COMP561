@@ -65,7 +65,7 @@ def sequence_probs(probsfile, seqfile):
 
     return seqs
 
-# Semi-randomly selects nucleotides based probabilities to form database sequence for alignment.
+# Semi-randomly selects nucleotides based probabilities list (seq_probs) to form database sequence for alignment.
 def random_seq(seq_probs):
     list_of_candidates = ['A','T', 'G', 'C']
     seq_copy = []
@@ -74,3 +74,20 @@ def random_seq(seq_probs):
         draw = choice(list_of_candidates, 1, p = probability_distribution)
         seq_copy.append(draw[0])
     return(seq_copy)
+
+# Get the list of probabilities depending on a specified seqence (seq) and the probability matrix (based on specific nucleotides).
+def datab_probs(seq, prob):
+
+    probs_list = []
+    for i, n in enumerate(seq):
+        
+        if n == 'A':
+            probs_list.append(prob[i][0])
+        elif n == 'T':
+            probs_list.append(prob[i][1])
+        elif n == 'G':
+            probs_list.append(prob[i][2])
+        elif n == 'C':
+            probs_list.append(prob[i][3])
+
+    return probs_list
