@@ -288,8 +288,8 @@ def create_datab(filename):
 # Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
 def run_BLASTn(q, d, o):
     blastn_cline = NcbiblastnCommandline(query=q, db=d, \
-    evalue=1e-20, outfmt=5, out=o, word_size=7)
-    #print(blastn_cline)
+    evalue=0.05, outfmt=5, out=o, word_size=7, task='blastn')
+    print(blastn_cline)
     stdout, stderr = blastn_cline()
 
 # Parsing XML file
