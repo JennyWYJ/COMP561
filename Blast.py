@@ -363,8 +363,8 @@ def permutate_mut(numPerms, datab):
 def permutate_indel(numPerms, datab):
     create_query_file('indels', "Indels")
     for i in range(numPerms):
-        numIndels = random.randint(1,5)
-        indel_query('indels', i, numIndels, datab, True)
+        numIndels = random.randint(1,8)
+        indel_query('indels2', i, numIndels, datab, True)
         
 
 # TESTS
@@ -394,10 +394,10 @@ def test_indelq():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
     y = random_seq(seq)
     permutate_indel(5, y)
-    dbname = create_fasta_datab(y, 'indeldb', 1)
+    dbname = create_fasta_datab(y, 'indeldb2', 1)
     create_datab(dbname)
-    run_BLASTn("IndelQueries/indels.fasta", dbname, 'indel_out.xml')
-    parse_XML('indel_out.xml','indel_results', seq, y)
+    run_BLASTn("IndelQueries/indels2.fasta", dbname, 'indel_out2.xml')
+    parse_XML('indel_out2.xml','indel_results2', seq, y)
 
 #test_controlq()
 #test_mutq()

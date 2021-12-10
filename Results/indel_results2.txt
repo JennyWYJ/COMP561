@@ -1,0 +1,7 @@
+QUERY: Indel query 2
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0038030537578919886
+Score 32 (30 bits), expectation 3.6e-03, alignment length 21
+Query:       1 AGGTCTACACCCTGGCGAGCA 21
+               ||||| |||||||||||||||
+Sbjct:  512588 AGGTC-ACACCCTGGCGAGCA 512607
