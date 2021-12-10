@@ -6,6 +6,9 @@ import random
 from Bio import SeqIO
 from Bio.Blast import NCBIWWW
 from Bio.Blast.Applications import NcbiblastnCommandline
+from Bio.Blast.Applications import NcbimakeblastdbCommandline
+from Bio.Blast import NCBIXML
+E_VALUE_THRESH = 1000#1e-20
 
 import subprocess
 
@@ -110,14 +113,7 @@ def datab_probs(seq, prob):
 
     return probs_list
 
-# Alignment using BLAST
-
-# Running BLAST on specified database with specific query
-# Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
-def run_BLASTn(q, d, o):
-    blastn_cline = NcbiblastnCommandline(query=q, db=d, \
-    evalue=1e-20, outfmt=5, out=o)
-    stdout, stderr = blastn_cline()
+# ALIGNMENT SECTION BELOW USING BLAST
 
 # Create query .fasta file using randomized database (no mutations, no indels). Control testing BLAST (query with identical nucleotides).
 # Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
@@ -251,14 +247,57 @@ def indel_query(filename, qnum, indelNum, dbseq):
 
     qfile.close()
 
-# Creating a BLAST database by calling bash script
-def create_datab(script_path):
-    subprocess.call(script_path)
+# Create fasta file for generated database
+# Params: generated database nucleotides (list), .fasta filename (string), database number (int)
+# Returns: .fasta filename
+def create_fasta_datab(generated_db, fname, dbNum):
+    dbname = "Databases/"+fname+".fasta" #path might need to change depending on user
+    dbfile = open(dbname, "w")
 
-#create_datab('https://github.com/JennyWYJ/COMP561/createDB.sh')
+    dbfile.write(">Database " + str(dbNum) + "\n")
+    for n in generated_db:
+        dbfile.write(n)
+    dbfile.write("\n")
+
+    dbfile.close()
+    return dbname
+
+# Creating a BLAST database using database .fasta filename (string)
+# Param: .fasta filename
+# Returns: custom database
+def create_datab(filename):
+    cline = NcbimakeblastdbCommandline(dbtype="nucl", input_file=filename)
+    return cline()
+
+# Running BLAST on specified database with specific query
+# Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
+def run_BLASTn(q, d, o):
+    blastn_cline = NcbiblastnCommandline(query=q, db=d, \
+    evalue=1e-20, outfmt=5, out=o)
+    return blastn_cline()
+
+# Parsing XML file
+# Param: XML filename (string)
+def parse_XML(filename):
+    for record in NCBIXML.parse(open(filename)):
+        print(record.alignments)
+        if record.alignments: #skip queries with no matches
+            print("Hi")
+            print("QUERY: %s" % record.query[:60])
+            for align in record.alignments:
+                for hsp in align.hsps:
+                    if hsp.expect < E_VALUE_THRESH:
+                        print("MATCH: %s " % align.title[:60])
+                        print(hsp.expect)
+
+# TESTS
 seq = sequence_probs('probsa.txt', 'seqa.txt')
 y = random_seq(seq)
 print(y)
-#create_query('test', 1, y)
+create_query('test', 1, y)
 #mut_query('test', 1, 2, y)
-indel_query('test', 1, 3, y)
+#indel_query('test', 1, 3, y)
+dbname = create_fasta_datab(y, 'test', 1)
+#d = create_datab(dbname)
+run_BLASTn("ControlQueries/test.fasta", dbname, 'out.xml')
+parse_XML('out.xml')
