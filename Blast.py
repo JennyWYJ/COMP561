@@ -288,7 +288,7 @@ def create_datab(filename):
 # Params: .fasta query filename (q - string), database name (d - string), .xml outfile name (o - string)
 def run_BLASTn(q, d, o):
     blastn_cline = NcbiblastnCommandline(query=q, db=d, \
-    evalue=1e-20, outfmt=5, out=o)
+    evalue=1e-20, outfmt=5, out=o, word_size=7)
     return blastn_cline()
 
 # Parsing XML file
@@ -316,15 +316,15 @@ def permutate_control(numPerms):
     #need to create datab
     #need to run BLAST
         
-permutate_control(5)
+#permutate_control(5)
 # TESTS
 seq = sequence_probs('full_probs.txt', 'full_seq.txt')
 y = random_seq(seq)
 #print(y)
-create_query('test', 1, y)
+#create_query('test', 1, y)
 #mut_query('test', 1, 2, y)
 #indel_query('test', 1, 3, y)
 dbname = create_fasta_datab(y, 'test', 1)
 #d = create_datab(dbname)
-run_BLASTn("ControlQueries/test.fasta", dbname, 'out.xml')
+run_BLASTn("ControlQueries/controlq.fasta", dbname, 'out.xml')
 parse_XML('out.xml')
