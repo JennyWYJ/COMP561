@@ -39,16 +39,16 @@
       <Hsp_evalue>5.91652e-06</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>21</Hsp_query-to>
-      <Hsp_hit-from>407788</Hsp_hit-from>
-      <Hsp_hit-to>407808</Hsp_hit-to>
+      <Hsp_hit-from>310862</Hsp_hit-from>
+      <Hsp_hit-to>310882</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
       <Hsp_identity>21</Hsp_identity>
       <Hsp_positive>21</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>21</Hsp_align-len>
-      <Hsp_qseq>GCACGGGGCCAGGCGCTTAGT</Hsp_qseq>
-      <Hsp_hseq>GCACGGGGCCAGGCGCTTAGT</Hsp_hseq>
+      <Hsp_qseq>CATTTGTCCAAACCCACAGAA</Hsp_qseq>
+      <Hsp_hseq>CATTTGTCCAAACCCACAGAA</Hsp_hseq>
       <Hsp_midline>|||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
@@ -86,16 +86,16 @@
       <Hsp_evalue>5.91652e-06</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>21</Hsp_query-to>
-      <Hsp_hit-from>240084</Hsp_hit-from>
-      <Hsp_hit-to>240104</Hsp_hit-to>
+      <Hsp_hit-from>555995</Hsp_hit-from>
+      <Hsp_hit-to>556015</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
       <Hsp_identity>21</Hsp_identity>
       <Hsp_positive>21</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>21</Hsp_align-len>
-      <Hsp_qseq>CCTTGCCTCTCCAGCTTTCCC</Hsp_qseq>
-      <Hsp_hseq>CCTTGCCTCTCCAGCTTTCCC</Hsp_hseq>
+      <Hsp_qseq>TGTAATTACAGAAAATGGGGG</Hsp_qseq>
+      <Hsp_hseq>TGTAATTACAGAAAATGGGGG</Hsp_hseq>
       <Hsp_midline>|||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>
@@ -133,16 +133,16 @@
       <Hsp_evalue>5.91652e-06</Hsp_evalue>
       <Hsp_query-from>1</Hsp_query-from>
       <Hsp_query-to>21</Hsp_query-to>
-      <Hsp_hit-from>119708</Hsp_hit-from>
-      <Hsp_hit-to>119728</Hsp_hit-to>
+      <Hsp_hit-from>122106</Hsp_hit-from>
+      <Hsp_hit-to>122126</Hsp_hit-to>
       <Hsp_query-frame>1</Hsp_query-frame>
       <Hsp_hit-frame>1</Hsp_hit-frame>
       <Hsp_identity>21</Hsp_identity>
       <Hsp_positive>21</Hsp_positive>
       <Hsp_gaps>0</Hsp_gaps>
       <Hsp_align-len>21</Hsp_align-len>
-      <Hsp_qseq>CTGGGACTTCCCTTAACCATC</Hsp_qseq>
-      <Hsp_hseq>CTGGGACTTCCCTTAACCATC</Hsp_hseq>
+      <Hsp_qseq>CTCCTTTCTCCGAATAAGTCC</Hsp_qseq>
+      <Hsp_hseq>CTCCTTTCTCCGAATAAGTCC</Hsp_hseq>
       <Hsp_midline>|||||||||||||||||||||</Hsp_midline>
     </Hsp>
   </Hit_hsps>

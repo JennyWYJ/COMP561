@@ -292,9 +292,24 @@ def run_BLASTn(q, d, o):
     print(blastn_cline)
     stdout, stderr = blastn_cline()
 
+# Calculates probability of matched sequence database
+# Params: database sequence (list), database probability matrix (list(list)), start match pos (int), end match pos (int)
+def calculate_probs(db, dbprobs, start, end):
+    final_prob = 1
+    for i in range(start-1, end):
+        if db[i] == 'A':
+            final_prob = final_prob * dbprobs[i][0]
+        elif db[i] == 'T':
+            final_prob = final_prob * dbprobs[i][1]
+        elif db[i] == 'G':
+            final_prob = final_prob * dbprobs[i][2]
+        elif db[i] == 'C':
+            final_prob = final_prob * dbprobs[i][3]
+    return final_prob
+
 # Parsing XML file
-# Param: XML filename (string)
-def parse_XML(filename, resultsfile):
+# Param: XML filename (string), results filename (string), database probabilities (list(list)), database sequence (list)
+def parse_XML(filename, resultsfile, dbprobs, db):
     fname = "Results/"+resultsfile+".txt" #path might need to change depending on user
     result = open(fname, "w")
     for record in NCBIXML.parse(open(filename)):
@@ -309,7 +324,13 @@ def parse_XML(filename, resultsfile):
                     if hsp.expect < E_VALUE_THRESH:
                         m = "MATCH: %s\n" % align.title[:60]
                         print("MATCH: %s " % align.title[:60])
-                        h = str(hsp)
+
+                        start = int(hsp.sbjct_start)
+                        end = int(hsp.sbjct_end)
+                        datab_prob = calculate_probs(db, dbprobs, start, end)
+                        print("Match database sequence probability: " + str(datab_prob) + '\n')
+                        result.write("Match database sequence probability: " + str(datab_prob) + '\n')
+                        h = str(hsp)+'\n'
                         print(hsp)
                         result.write(m)
                         result.write(h)
@@ -339,6 +360,6 @@ def test_controlq():
     dbname = create_fasta_datab(y, 'controldb', 1)
     create_datab(dbname)
     run_BLASTn("ControlQueries/controls.fasta", dbname, 'control_out.xml')
-    parse_XML('control_out.xml','control_results')
+    parse_XML('control_out.xml','control_results', seq, y)
 
 test_controlq()
