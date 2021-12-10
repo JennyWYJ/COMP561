@@ -115,12 +115,23 @@ def datab_probs(seq, prob):
 
 # ALIGNMENT SECTION BELOW USING BLAST
 
+def create_query_file(filename, fileType):
+    fname = ''
+    if fileType == "Control":
+        fname = "ControlQueries/"+filename+".fasta"
+    elif fileType == "Mutation":
+        fname = "MutationQueries/"+filename+".fasta"
+    elif fileType == "Indels":
+        fname = "IndelQueries/"+filename+".fasta" 
+    qfile = open(fname, "w")
+    qfile.close()
+
 # Create query .fasta file using randomized database (no mutations, no indels). Control testing BLAST (query with identical nucleotides).
-# Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list)
-def create_query(filename, qnum, dbseq):
+# Params: .fasta filename (string), query number (int), dbseq database sequence from random_seq (list), cap query length at 20 nucleotides (bool)
+def create_query(filename, qnum, dbseq, capLength):
     fname = "ControlQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Control query "+str(qnum)
-    qfile = open(fname, "w")
+    qfile = open(fname, "a")
 
     random_startpos = random.randint(0, len(dbseq)-3)
     random_endpos = 0
@@ -129,6 +140,10 @@ def create_query(filename, qnum, dbseq):
     else:
         random_endpos = random.randint(random_startpos+2, len(dbseq)-1)
 
+    endPos = random_startpos + 20
+    if capLength == True and endPos<len(dbseq):
+        random_endpos = endPos
+        
     if random_endpos == len(dbseq)-1:
         qfile.write(">" + qname + "\n")
         for i in range(random_startpos,len(dbseq)):
@@ -147,7 +162,7 @@ def create_query(filename, qnum, dbseq):
 def mut_query(filename, qnum, mutNum, dbseq):
     fname = "MutationQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Mutation query "+str(qnum)
-    qfile = open(fname, "w")
+    qfile = open(fname, "a")
     
     numMuts = mutNum
     list_of_candidates = ['A','T', 'G', 'C']
@@ -196,7 +211,7 @@ def mut_query(filename, qnum, mutNum, dbseq):
 def indel_query(filename, qnum, indelNum, dbseq):
     fname = "IndelQueries/"+filename+".fasta" #path might need to change depending on user
     qname = "Indel query "+str(qnum)
-    qfile = open(fname, "w")
+    qfile = open(fname, "a")
     
     numIndels = indelNum
     list_of_candidates = ['A','T', 'G', 'C']
@@ -290,6 +305,18 @@ def parse_XML(filename):
                         print("MATCH: %s " % align.title[:60])
                         print(hsp.expect)
 
+# Permutates for numPerms amount of times control queries (not permutation for BLAST)
+def permutate_control(numPerms):
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    create_query_file('controlq', "Control")
+    for i in range(numPerms):
+        datab = random_seq(seq)
+        create_query('controlq', i, datab, True)
+    
+    #need to create datab
+    #need to run BLAST
+        
+permutate_control(5)
 # TESTS
 seq = sequence_probs('full_probs.txt', 'full_seq.txt')
 y = random_seq(seq)
