@@ -324,15 +324,16 @@ def parse_XML(filename, resultsfile, dbprobs, db):
                     if hsp.expect < E_VALUE_THRESH:
                         m = "MATCH: %s\n" % align.title[:60]
                         print("MATCH: %s " % align.title[:60])
-
+                        result.write(m)
+                        
                         start = int(hsp.sbjct_start)
                         end = int(hsp.sbjct_end)
                         datab_prob = calculate_probs(db, dbprobs, start, end)
                         print("Match database sequence probability: " + str(datab_prob) + '\n')
                         result.write("Match database sequence probability: " + str(datab_prob) + '\n')
+                        
                         h = str(hsp)+'\n'
                         print(hsp)
-                        result.write(m)
                         result.write(h)
     result.close()
                     
