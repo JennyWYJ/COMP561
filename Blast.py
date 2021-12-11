@@ -369,21 +369,21 @@ def permutate_indel(numPerms, datab):
 # Permutates datab for a same control query        
 def permutate_datab(numPerms, seqProbs):
     datab = random_seq(seqProbs)
-    dbname = create_fasta_datab(datab, 'permutedb5', 1)
+    dbname = create_fasta_datab(datab, 'permutedb8', 1)
     create_datab(dbname)
 
-    create_query_file("control_for_db_perm5", "Control")
-    create_query("control_for_db_perm5", 1, datab, True)
+    create_query_file("control_for_db_perm8", "Control")
+    create_query("control_for_db_perm8", 1, datab, True)
 
-    result = open("Results/control_for_db_perm5_results.txt", "w")
+    result = open("Results/control_for_db_perm8_results.txt", "w")
 
     for i in range(numPerms):
         result.write("DATABASE"+str(i)+'\n')
-        run_BLASTn("ControlQueries/control_for_db_perm5.fasta", dbname, 'controldb5_out.xml')
-        parse_XML('controldb5_out.xml','control_for_db_perm5_results', seqProbs, datab)
+        run_BLASTn("ControlQueries/control_for_db_perm8.fasta", dbname, 'controldb8_out.xml')
+        parse_XML('controldb8_out.xml','control_for_db_perm8_results', seqProbs, datab)
 
         datab = random_seq(seqProbs)
-        dbname = create_fasta_datab(datab, 'permutedb5', 1)
+        dbname = create_fasta_datab(datab, 'permutedb8', 1)
         create_datab(dbname)
 
     result.close()
@@ -466,7 +466,7 @@ def test_indelq():
 
 def test_db_perms():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-    permutate_datab(5, seq)
+    permutate_datab(8, seq)
 
 def test_db_perms_mut():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')

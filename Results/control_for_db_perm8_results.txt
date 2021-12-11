@@ -1,0 +1,55 @@
+DATABASE0
+DATABASE1
+DATABASE2
+DATABASE3
+DATABASE4
+DATABASE5
+DATABASE6
+DATABASE7
+ probability: 5.535340363989881e-05
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 AGCACAGTGTGCTCCAGAACT 21
+               |||||||||||||||||||||
+Sbjct:  181807 AGCACAGTGTGCTCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0019943505723198844
+Score 34 (31 bits), expectation 8.8e-04, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||| |||||||||||||
+Sbjct:  181808 GCACAGCGTGCTCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.10171187918831402
+Score 30 (28 bits), expectation 1.1e-02, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||| ||| |||||||||
+Sbjct:  181808 GCACAGGGTGGTCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.10171187918831402
+Score 30 (28 bits), expectation 1.1e-02, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||| ||| |||||||||
+Sbjct:  181808 GCACAGAGTGGTCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2931695341310227
+Score 30 (28 bits), expectation 1.1e-02, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||| ||| |||||||||
+Sbjct:  181808 GCACAGCGTGGTCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0006919175454987353
+Score 34 (31 bits), expectation 8.8e-04, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||||||| |||||||||
+Sbjct:  181808 GCACAGTGTGATCCAGAACT 181827
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2931695341310227
+Score 30 (28 bits), expectation 1.1e-02, alignment length 20
+Query:       2 GCACAGTGTGCTCCAGAACT 21
+               |||||| ||| |||||||||
+Sbjct:  181808 GCACAGCGTGGTCCAGAACT 181827
