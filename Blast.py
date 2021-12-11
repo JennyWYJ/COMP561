@@ -480,4 +480,5 @@ def test_db_perms_indel():
 #test_mutq()
 #test_indelq()
 #test_db_perms()
-test_db_perms_mut()
+#test_db_perms_mut()
+test_db_perms_indel()

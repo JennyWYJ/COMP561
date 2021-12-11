@@ -1,0 +1,29 @@
+DATABASE0
+DATABASE1
+DATABASE2
+DATABASE3
+DATABASE4
+DATABASE5
+DATABASE6
+DATABASE7
+DATABASE8
+DATABASE9
+4661033362
+Score 34 (31 bits), expectation 1.3e-03, alignment length 22
+Query:       3 AGGGCGGCAGAGGGAACAGGTG 24
+               |||||||||||||||| |||||
+Sbjct:  393354 AGGGCGGCAGAGGGAA-AGGTG 393374
+QUERY: Indel query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 1
+Score 30 (28 bits), expectation 1.6e-02, alignment length 15
+Query:       7 CGGCAGAGGGAACAG 21
+               |||||||||||||||
+Sbjct:  406763 CGGCAGAGGGAACAG 406749
+QUERY: Indel query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 1
+Score 30 (28 bits), expectation 1.6e-02, alignment length 15
+Query:       7 CGGCAGAGGGAACAG 21
+               |||||||||||||||
+Sbjct:  433941 CGGCAGAGGGAACAG 433927
