@@ -365,7 +365,8 @@ def permutate_indel(numPerms, datab):
     for i in range(numPerms):
         numIndels = random.randint(1,8)
         indel_query('indels2', i, numIndels, datab, True)
-        
+
+# Permutates datab for a same control query        
 def permutate_datab(numPerms, seqProbs):
     datab = random_seq(seqProbs)
     dbname = create_fasta_datab(datab, 'permutedb100', 1)
@@ -386,7 +387,51 @@ def permutate_datab(numPerms, seqProbs):
         create_datab(dbname)
 
     result.close()
-    
+
+# Permutates datab for a same mutation query        
+def permutate_datab_mut(numPerms, seqProbs):
+    datab = random_seq(seqProbs)
+    dbname = create_fasta_datab(datab, 'permutedb10-mut', 1)
+    create_datab(dbname)
+
+    create_query_file("mut_for_db_perm10", "Mutation")
+    mut_query("mut_for_db_perm10", 1, 4, datab, True)
+
+    result = open("Results/mut_for_db_perm10_results.txt", "w")
+
+    for i in range(numPerms):
+        result.write("DATABASE"+str(i)+'\n')
+        run_BLASTn("MutationQueries/mut_for_db_perm10.fasta", dbname, 'mutdb10_out.xml')
+        parse_XML('mutdb10_out.xml','mut_for_db_perm10_results', seqProbs, datab)
+
+        datab = random_seq(seqProbs)
+        dbname = create_fasta_datab(datab, 'permutedb10-mut', 1)
+        create_datab(dbname)
+
+    result.close()
+
+# Permutates datab for a same indel query        
+def permutate_datab_indel(numPerms, seqProbs):
+    datab = random_seq(seqProbs)
+    dbname = create_fasta_datab(datab, 'permutedb10-indel', 1)
+    create_datab(dbname)
+
+    create_query_file("indel_for_db_perm10", "Indels")
+    indel_query("indel_for_db_perm10", 1, 4, datab, True)
+
+    result = open("Results/indel_for_db_perm10_results.txt", "w")
+
+    for i in range(numPerms):
+        result.write("DATABASE"+str(i)+'\n')
+        run_BLASTn("IndelQueries/indel_for_db_perm10.fasta", dbname, 'indeldb10_out.xml')
+        parse_XML('indeldb10_out.xml','indel_for_db_perm10_results', seqProbs, datab)
+
+        datab = random_seq(seqProbs)
+        dbname = create_fasta_datab(datab, 'permutedb10-indel', 1)
+        create_datab(dbname)
+
+    result.close()
+
 # TESTS
 def test_controlq():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
@@ -423,7 +468,16 @@ def test_db_perms():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
     permutate_datab(100, seq)
 
+def test_db_perms_mut():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    permutate_datab_mut(10, seq)
+
+def test_db_perms_indel():
+    seq = sequence_probs('full_probs.txt', 'full_seq.txt')
+    permutate_datab_indel(10, seq)
+
 #test_controlq()
 #test_mutq()
 #test_indelq()
-test_db_perms()
+#test_db_perms()
+test_db_perms_mut()
