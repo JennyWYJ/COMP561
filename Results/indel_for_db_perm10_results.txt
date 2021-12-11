@@ -8,22 +8,54 @@ DATABASE6
 DATABASE7
 DATABASE8
 DATABASE9
-4661033362
-Score 34 (31 bits), expectation 1.3e-03, alignment length 22
-Query:       3 AGGGCGGCAGAGGGAACAGGTG 24
-               |||||||||||||||| |||||
-Sbjct:  393354 AGGGCGGCAGAGGGAA-AGGTG 393374
+28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       2 CCTCCTCCTCTTCC 15
+               ||||||||||||||
+Sbjct:  108237 CCTCCTCCTCTTCC 108224
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.009440312156645082
+Score 28 (26 bits), expectation 2.5e-02, alignment length 17
+Query:       1 TCCTCCTCCTCTTCCCC 17
+               ||||||||||| |||||
+Sbjct:  269148 TCCTCCTCCTCCTCCCC 269164
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.013847103655406286
+Score 28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       1 TCCTCCTCCTCTTC 14
+               ||||||||||||||
+Sbjct:  285402 TCCTCCTCCTCTTC 285415
 QUERY: Indel query 1
 MATCH: gnl|BL_ORD_ID|0 Database 1
 Match database sequence probability: 1
-Score 30 (28 bits), expectation 1.6e-02, alignment length 15
-Query:       7 CGGCAGAGGGAACAG 21
-               |||||||||||||||
-Sbjct:  406763 CGGCAGAGGGAACAG 406749
+Score 28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       2 CCTCCTCCTCTTCC 15
+               ||||||||||||||
+Sbjct:  108237 CCTCCTCCTCTTCC 108224
 QUERY: Indel query 1
 MATCH: gnl|BL_ORD_ID|0 Database 1
 Match database sequence probability: 1
-Score 30 (28 bits), expectation 1.6e-02, alignment length 15
-Query:       7 CGGCAGAGGGAACAG 21
-               |||||||||||||||
-Sbjct:  433941 CGGCAGAGGGAACAG 433927
+Score 28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       2 CCTCCTCCTCTTCC 15
+               ||||||||||||||
+Sbjct:  108237 CCTCCTCCTCTTCC 108224
+QUERY: Indel query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0313816535896428
+Score 28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       4 TCCTCCTCTTCCCC 17
+               ||||||||||||||
+Sbjct:  231240 TCCTCCTCTTCCCC 231253
+QUERY: Indel query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 1
+Score 28 (26 bits), expectation 2.5e-02, alignment length 17
+Query:       2 CCTCCTCCTCTTCCCCG 18
+               |||||||| ||||||||
+Sbjct:  408048 CCTCCTCCCCTTCCCCG 408032
+QUERY: Indel query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 1
+Score 28 (26 bits), expectation 2.5e-02, alignment length 14
+Query:       2 CCTCCTCCTCTTCC 15
+               ||||||||||||||
+Sbjct:  108237 CCTCCTCCTCTTCC 108224

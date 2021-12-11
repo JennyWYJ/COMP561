@@ -7,7 +7,7 @@
   <BlastOutput_db>Databases/permutedb10-indel.fasta</BlastOutput_db>
   <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
   <BlastOutput_query-def>Indel query 1</BlastOutput_query-def>
-  <BlastOutput_query-len>25</BlastOutput_query-len>
+  <BlastOutput_query-len>19</BlastOutput_query-len>
   <BlastOutput_param>
     <Parameters>
       <Parameters_expect>0.05</Parameters_expect>
@@ -23,21 +23,48 @@
   <Iteration_iter-num>1</Iteration_iter-num>
   <Iteration_query-ID>Query_1</Iteration_query-ID>
   <Iteration_query-def>Indel query 1</Iteration_query-def>
-  <Iteration_query-len>25</Iteration_query-len>
+  <Iteration_query-len>19</Iteration_query-len>
 <Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gnl|BL_ORD_ID|0</Hit_id>
+  <Hit_def>Database 1</Hit_def>
+  <Hit_accession>0</Hit_accession>
+  <Hit_len>604466</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>26.5335</Hsp_bit-score>
+      <Hsp_score>28</Hsp_score>
+      <Hsp_evalue>0.0248915</Hsp_evalue>
+      <Hsp_query-from>2</Hsp_query-from>
+      <Hsp_query-to>15</Hsp_query-to>
+      <Hsp_hit-from>108237</Hsp_hit-from>
+      <Hsp_hit-to>108224</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>-1</Hsp_hit-frame>
+      <Hsp_identity>14</Hsp_identity>
+      <Hsp_positive>14</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>14</Hsp_align-len>
+      <Hsp_qseq>CCTCCTCCTCTTCC</Hsp_qseq>
+      <Hsp_hseq>CCTCCTCCTCTTCC</Hsp_hseq>
+      <Hsp_midline>||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
 </Iteration_hits>
   <Iteration_stat>
     <Statistics>
       <Statistics_db-num>1</Statistics_db-num>
       <Statistics_db-len>604466</Statistics_db-len>
-      <Statistics_hsp-len>16</Statistics_hsp-len>
-      <Statistics_eff-space>5440050</Statistics_eff-space>
+      <Statistics_hsp-len>15</Statistics_hsp-len>
+      <Statistics_eff-space>2417804</Statistics_eff-space>
       <Statistics_kappa>0.41</Statistics_kappa>
       <Statistics_lambda>0.625</Statistics_lambda>
       <Statistics_entropy>0.78</Statistics_entropy>
     </Statistics>
   </Iteration_stat>
-  <Iteration_message>No hits found</Iteration_message>
 </Iteration>
 </BlastOutput_iterations>
 </BlastOutput>

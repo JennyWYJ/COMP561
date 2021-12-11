@@ -417,7 +417,7 @@ def permutate_datab_indel(numPerms, seqProbs):
     create_datab(dbname)
 
     create_query_file("indel_for_db_perm10", "Indels")
-    indel_query("indel_for_db_perm10", 1, 4, datab, True)
+    indel_query("indel_for_db_perm10", 1, 2, datab, True)
 
     result = open("Results/indel_for_db_perm10_results.txt", "w")
 
