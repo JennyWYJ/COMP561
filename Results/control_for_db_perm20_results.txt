@@ -1,0 +1,156 @@
+DATABASE0
+DATABASE1
+DATABASE2
+DATABASE3
+DATABASE4
+DATABASE5
+DATABASE6
+DATABASE7
+DATABASE8
+DATABASE9
+DATABASE10
+DATABASE11
+DATABASE12
+DATABASE13
+DATABASE14
+DATABASE15
+DATABASE16
+DATABASE17
+DATABASE18
+DATABASE19
+ 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.051989477476260634
+Score 34 (31 bits), expectation 8.8e-04, alignment length 20
+Query:       1 GGCTCAAATGATTATAAGCA 20
+               ||||| ||||||||||||||
+Sbjct:  250011 GGCTCTAATGATTATAAGCA 250030
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2854222313446709
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.025390209930266822
+Score 34 (31 bits), expectation 8.8e-04, alignment length 20
+Query:       1 GGCTCAAATGATTATAAGCA 20
+               ||||||||||||||||| ||
+Sbjct:  250011 GGCTCAAATGATTATAAACA 250030
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.031713581260518986
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||| |||||||||||||||
+Sbjct:  250011 GGCTCGAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2854222313446709
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.01421643297885334
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||| ||
+Sbjct:  250011 GGCTCAAATGATTATAAGGAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0028787086088737893
+Score 28 (26 bits), expectation 3.7e-02, alignment length 19
+Query:       2 GCTCAAATGATTATAAGCA 20
+               |||| ||||||||||| ||
+Sbjct:  250012 GCTCGAATGATTATAAACA 250030
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2854222313446709
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0003608876681678514
+Score 28 (26 bits), expectation 3.7e-02, alignment length 19
+Query:       2 GCTCAAATGATTATAAGCA 20
+               |||| |||||| |||||||
+Sbjct:  250012 GCTCGAATGATCATAAGCA 250030
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0015796036643170375
+Score 32 (30 bits), expectation 3.1e-03, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||| |||||||||||| ||
+Sbjct:  250011 GGCTCCAATGATTATAAGTAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.031713581260518986
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||| |||||||||||||||
+Sbjct:  250011 GGCTCCAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.015488028057462761
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||||||||||||||| |||
+Sbjct:  250011 GGCTCAAATGATTATAACCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2854222313446709
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.031713581260518986
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||| |||||||||||||||
+Sbjct:  250011 GGCTCTAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.46790529728634567
+Score 40 (37 bits), expectation 2.1e-05, alignment length 20
+Query:       1 GGCTCAAATGATTATAAGCA 20
+               ||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCA 250030
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.2854222313446709
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0009610176139551215
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               |||| ||||||||||||||||
+Sbjct:  250011 GGCTAAAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.031713581260518986
+Score 36 (33 bits), expectation 2.5e-04, alignment length 21
+Query:       1 GGCTCAAATGATTATAAGCAC 21
+               ||||| |||||||||||||||
+Sbjct:  250011 GGCTCGAATGATTATAAGCAC 250031
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.46790529728634567
+Score 40 (37 bits), expectation 2.1e-05, alignment length 20
+Query:       1 GGCTCAAATGATTATAAGCA 20
+               ||||||||||||||||||||
+Sbjct:  250011 GGCTCAAATGATTATAAGCA 250030

@@ -368,21 +368,21 @@ def permutate_indel(numPerms, datab):
         
 def permutate_datab(numPerms, seqProbs):
     datab = random_seq(seqProbs)
-    dbname = create_fasta_datab(datab, 'permutedb3', 1)
+    dbname = create_fasta_datab(datab, 'permutedb20', 1)
     create_datab(dbname)
 
-    create_query_file("control_for_db_perm3", "Control")
-    create_query("control_for_db_perm3", 1, datab, True)
+    create_query_file("control_for_db_perm20", "Control")
+    create_query("control_for_db_perm20", 1, datab, True)
 
-    result = open("Results/control_for_db_perm_results.txt", "w")
+    result = open("Results/control_for_db_perm20_results.txt", "w")
 
     for i in range(numPerms):
         result.write("DATABASE"+str(i)+'\n')
-        run_BLASTn("ControlQueries/control_for_db_perm3.fasta", dbname, 'controldb3_out.xml')
-        parse_XML('controldb3_out.xml','control_for_db_perm3_results', seqProbs, datab)
+        run_BLASTn("ControlQueries/control_for_db_perm20.fasta", dbname, 'controldb20_out.xml')
+        parse_XML('controldb20_out.xml','control_for_db_perm20_results', seqProbs, datab)
 
         datab = random_seq(seqProbs)
-        dbname = create_fasta_datab(datab, 'permutedb3', 1)
+        dbname = create_fasta_datab(datab, 'permutedb20', 1)
         create_datab(dbname)
 
     result.close()
@@ -421,7 +421,7 @@ def test_indelq():
 
 def test_db_perms():
     seq = sequence_probs('full_probs.txt', 'full_seq.txt')
-    permutate_datab(3, seq)
+    permutate_datab(20, seq)
 
 #test_controlq()
 #test_mutq()
