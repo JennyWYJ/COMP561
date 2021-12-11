@@ -1,0 +1,25 @@
+DATABASE0
+DATABASE1
+DATABASE2
+DATABASE3
+DATABASE4
+base 1
+Match database sequence probability: 0.007139406409927684
+Score 42 (39 bits), expectation 5.9e-06, alignment length 21
+Query:       1 CCTTCAGGAGCACGATGAGAC 21
+               |||||||||||||||||||||
+Sbjct:  343710 CCTTCAGGAGCACGATGAGAC 343730
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.0008047848725851129
+Score 32 (30 bits), expectation 3.1e-03, alignment length 21
+Query:       1 CCTTCAGGAGCACGATGAGAC 21
+               ||| ||||||| |||||||||
+Sbjct:  343710 CCTCCAGGAGCTCGATGAGAC 343730
+QUERY: Control query 1
+MATCH: gnl|BL_ORD_ID|0 Database 1
+Match database sequence probability: 0.19047529431220384
+Score 34 (31 bits), expectation 8.8e-04, alignment length 17
+Query:       5 CAGGAGCACGATGAGAC 21
+               |||||||||||||||||
+Sbjct:  343714 CAGGAGCACGATGAGAC 343730
